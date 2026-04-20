@@ -1,0 +1,25 @@
+<h1>Search Tasks</h1>
+<form method="GET" action="/tasks/search/">
+  <input type="text" name="q" placeholder="Search..." />
+  <button type="submit">Search</button>
+</form>
+
+<ul>
+  {% for t in tasks %}
+  <li>{{ t.title }} - {% if t.is_completed %}✅{% else %}❌{% endif %}
+  <a href="{% url 'edit_task' t.id%}">Edit</a>
+  <a href="{% url 'delete_task' t.id%}" onclick="return confirm('Are you sure?')">Delete</a>
+  </li>
+  {% empty %}
+  <li>No tasks found.</li>
+  {% endfor %}
+</ul>
+
+<hr />
+<h3>Add New Task</h3>
+<form method="POST" action="{% url 'task_search'%}" novalidate>
+  {% csrf_token %}
+  <span>Now fill form</span>
+  {{ form.as_p }}
+  <button type="submit">Save Task</button>
+</form>
