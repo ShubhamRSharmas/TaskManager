@@ -22,4 +22,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('tasks/', include('tasks.urls')), #This forwards everythin starting with 'tasks/'
     path('', lambda request: redirect('task_search')), #This line redirects the home page to the search page
+    path('accounts/', include('django.contrib.auth.urls')),
 ]

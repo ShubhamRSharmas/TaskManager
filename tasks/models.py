@@ -1,7 +1,13 @@
 from django.db import models
+from django.contrib.auth.models import User #Import the built-in User model
 
 # Create your models here.
 class Task(models.Model):
+    #User: Built-in Django One-to-many relationship (One user many tasks)
+    #on_delete=models.CASCADE : If a user deletes their account, all their tasks will be deleted automatically
+    #null = True, blank = True: Important temporarily
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
+
     PRIORITY_CHOICES = [
         ('L', 'Low'),
         ('M', 'Medium'),
@@ -18,3 +24,4 @@ class Task(models.Model):
     def __str__(self):
         status = "✅" if self.is_completed else "❌"
         return f"{self.title} - {status}" 
+    
