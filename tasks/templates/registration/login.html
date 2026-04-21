@@ -1,3 +1,6 @@
+{% extends 'tasks/base.html' %}
+
+{% block content %}
 <h1>Login Page</h1>
 
 {% if messages %}
@@ -13,3 +16,4 @@
   {{ form.as_p }}
   <button type="submit">Login</button>
 </form>
+{% endblock %}

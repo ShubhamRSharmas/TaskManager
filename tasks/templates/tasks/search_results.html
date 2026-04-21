@@ -1,3 +1,5 @@
+{% extends 'tasks/base.html'%}
+{% block content %}
 <h1>Search Tasks</h1>
 <form method="GET" action="/tasks/search/">
   <input type="text" name="q" placeholder="Search..." />
@@ -23,3 +25,4 @@
   {{ form.as_p }}
   <button type="submit">Save Task</button>
 </form>
+{% endblock %}

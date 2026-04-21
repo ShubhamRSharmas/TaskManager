@@ -8,6 +8,7 @@ from django.contrib.auth import login, logout
 
 # Create your views here.
 # --- ADD Function ---
+@login_required
 def task_search(request):
     # --- Logic for adding a Task ---
     if request.method == "POST":
@@ -98,9 +99,14 @@ def user_login(request):
             user = form.get_user()
             #Start the session
             login(request,user)
-            messages.success(request, 'Login Successful! Redirecting to search page...')
+            messages.success(request, 'Login Successful!')
             return redirect('task_search')
     else:
         form = AuthenticationForm()
     return render(request, 'registration/login.html', {'form':form})
+
+# --- LOGOUT Function ---
+def user_logout(request):
+    logout(request)
+    return redirect('user_login')
     
