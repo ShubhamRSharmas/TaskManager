@@ -121,3 +121,7 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+#For navigation around Login
+LOGIN_REDIRECT_URL = 'task_search' #Redirects to your main dashboard after login
+LOGOUT_REDIRECT_URL = 'login' #Send them back to login after they log out
